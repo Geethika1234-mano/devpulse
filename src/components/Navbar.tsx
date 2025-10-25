@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { useLogout } from "../hooks/useLogout";
 
 interface GithubUser {
   login: string;
@@ -11,6 +12,7 @@ interface GithubUser {
 export default function Navbar() {
   const { token } = useAuth();
   const [user, setUser] = useState<GithubUser | null>(null);
+  const logout = useLogout();
 
   useEffect(() => {
     if (!token) return;
@@ -36,7 +38,7 @@ export default function Navbar() {
             <span className="text-sm text-white font-semibold">{user.name || user.login}</span>
           </div>
         )}
-        <button className="text-sm text-zinc-300 hover:text-red-400 transition">Logout</button>
+        <button onClick={logout} className="text-sm text-zinc-300 hover:text-red-400 transition">Logout</button>
       </div>
     </nav>
   );
