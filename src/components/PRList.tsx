@@ -1,7 +1,7 @@
 type PR = { id: number; title: string; html_url: string; user: { login: string }; updated_at: string };
 
 import { useState } from "react";
-import { getPRReviewSuggestion } from "../api/openaiReview";
+// import { getPRReviewSuggestion } from "../api/openaiReview";
 
 type PRListProps = {
   prs: PR[];
@@ -17,10 +17,10 @@ export default function PRList({ prs }: PRListProps) {
     setLoadingReview(true);
     setReviewText("");
     try {
-      const text = await getPRReviewSuggestion(pr.title);
-      setReviewText(text);
+    //   const text = await getPRReviewSuggestion(pr.title);
+      setReviewText("good pr");
     } catch {
-      setReviewText("Error generating review. Please check your OpenAI API key.",);
+      setReviewText("Error generating review. Please check your OpenAI API key.");
     } finally {
       setLoadingReview(false);
     }
