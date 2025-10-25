@@ -12,7 +12,8 @@ export const router = createBrowserRouter([
       { path: "repo/:owner/:name", element: <RepoView /> },
       { path: "analytics", element: <Analytics /> },
     { path: "profile", element: <Profile /> },
+     { path: "login", element: <Login /> },
     ]
   },
-  { path: "/login", element: <Login /> },
+
 ]);
