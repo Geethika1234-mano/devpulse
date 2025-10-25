@@ -1,75 +1,94 @@
-# React + TypeScript + Vite
+# DevPulse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DevPulse is a modern, AI-powered GitHub dashboard for developers. It combines real-time repository analytics, PR review automation, and a beautiful UI to help you manage your GitHub workflow efficiently.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **🔐 GitHub Login via Firebase Auth**
+  - Secure OAuth login with GitHub.
+  - Persistent authentication using Firebase.
 
-## React Compiler
+- **📦 Real-time Repository Dashboard**
+  - Fetches and displays your public and private repositories.
+  - Shows stars, forks, privacy status, and live PRs for each repo.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **🧩 Repository Detail View**
+  - View detailed analytics and pull requests for any repository.
+  - See PR titles, authors, update times, and direct GitHub links.
 
-Note: This will impact Vite dev & build performances.
+- **🤖 AI-Powered PR Review**
+  - Generate PR review suggestions using OpenAI.
+  - Summarize changes and get improvement tips for your PRs.
 
-## Expanding the ESLint configuration
+- **📈 Analytics & Insights**
+  - Visualize PR activity, review patterns, and contributor stats with charts.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **👥 User Profile**
+  - View your GitHub avatar, bio, stats, pinned repos, organizations, and recent activity.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **🎨 Modern UI**
+  - Responsive, dark-themed layout built with Tailwind CSS.
+  - Includes Navbar, Sidebar, Dashboard, and Profile page.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Frontend:** React, TypeScript, Tailwind CSS, Vite
+- **Backend/API:** Vercel Serverless Functions
+- **Auth:** Firebase + GitHub OAuth
+- **Charts:** Recharts
+- **AI:** OpenAI GPT-4o (via secure backend API)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚡ Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/your-username/devpulse.git
+   cd devpulse
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   - Create a `.env` file in the root:
+     ```
+     VITE_FIREBASE_API_KEY=your_firebase_key
+     VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+     VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+     VITE_FIREBASE_APP_ID=your_firebase_app_id
+     ```
+   - **For OpenAI (in Vercel):**
+     - Add `OPENAI_API_KEY` in your Vercel project settings (do NOT expose this in `.env` for frontend).
+
+4. **Run locally with Vercel CLI:**
+   ```bash
+   vercel dev
+   ```
+
+5. **Deploy to Vercel:**
+   - Push your code to GitHub.
+   - Import your repo in Vercel and set environment variables.
+   - Deploy!
+
+## 🧑‍💻 Usage
+
+- **Login:** Sign in with your GitHub account.
+- **Dashboard:** View and search your repositories, see live PRs.
+- **Repo Details:** Click a repo to view PRs and analytics.
+- **AI Review:** Click "AI Review Suggestion" on a PR for instant feedback.
+- **Profile:** View your GitHub profile, stats, organizations, and activity.
+
+## 📝 Security Notes
+
+- **Never expose your OpenAI API key in frontend code.**
+- All OpenAI requests are handled securely via Vercel serverless functions.
+
+## 📄 License
+
+MIT
+
+---
+
+**DevPulse** — Your AI-powered GitHub dashboard!
